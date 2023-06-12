@@ -14,7 +14,6 @@ def dataprepare(ifilepath = '../data',ofilepath = '../all'):
         sys.exit()
     os.makedirs(ofilepath)
     os.makedirs(os.path.join(ofilepath, 'train_all'))
-    os.makedirs(os.path.join(ofilepath, 'train'))
     os.makedirs(os.path.join(ofilepath, 'val'))
     prepare_Market(ifilepath,ofilepath)
     prepare_DukeMTMC(ifilepath, ofilepath)
@@ -97,10 +96,6 @@ def prepare_CUHK03(ifilepath = '../data',ofilepath = '../all'):
         print('CUHK03数据集不存在\n')
         return
     print('******处理CUHK03中******')
-    inpath = os.path.join(ipath,'detected')
-    extract_cuhk03(os.path.join(inpath,'bounding_box_train'),os.path.join(ofilepath,'train_all'))
-    extract_cuhk03(os.path.join(inpath,'query'),os.path.join(ofilepath,'train_all'))
-    extract_cuhk03(os.path.join(inpath,'bounding_box_test'),os.path.join(ofilepath,'val'),'val')
     inpath = os.path.join(ipath, 'labeled')
     extract_cuhk03(os.path.join(inpath, 'bounding_box_train'), os.path.join(ofilepath, 'train_all'))
     extract_cuhk03(os.path.join(inpath, 'query'), os.path.join(ofilepath, 'train_all'))
