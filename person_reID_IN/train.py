@@ -114,7 +114,7 @@ def train_model(model, criterion, optimizer, scheduler, num_epochs=25):
         # Each epoch has a training and validation phase
         for phase in ['train','val']:
             if phase == 'train':
-                scheduler.step()
+                #scheduler.step()
                 model.train(True)  # Set model to training mode
             else:
                 model.train(False)  # Set model to evaluate mode
@@ -166,7 +166,7 @@ def train_model(model, criterion, optimizer, scheduler, num_epochs=25):
                 #draw_curve(epoch)
 
         print()
-
+        scheduler.step()
     time_elapsed = time.time() - since
     print('Training complete in {:.0f}m {:.0f}s'.format(
         time_elapsed // 60, time_elapsed % 60))
