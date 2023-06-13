@@ -18,14 +18,13 @@ import time
 import os
 import models
 from losses import CrossEntropyLabelSmooth
-
-from data_prepare import dataprepare
+# from data_prepare import dataprepare
 
 # --------
 parser = argparse.ArgumentParser(description='Training')
 parser.add_argument('--gpu_ids',default='0', type=str,help='gpu_ids: e.g. 0  0,1,2  0,2')
-parser.add_argument('--srcdata_dir',default='../data',type=str, help='source datasets path')
-parser.add_argument('--data_dir',default='../all',type=str, help='training dir path')
+#parser.add_argument('--srcdata_dir',default='../data',type=str, help='source datasets path')
+parser.add_argument('--data_dir',default='/kaggle/input/traindata/all',type=str, help='training dir path')
 parser.add_argument('--train_all', default=True,action='store_true', help='use all training data' )
 parser.add_argument('--seed', type=int, default=1, help="manual seed")
 parser.add_argument('--batchsize', default=64, type=int, help='batchsize')
@@ -37,7 +36,7 @@ parser.add_argument('--pretrained', dest='pretrained', action='store_true',
 opt = parser.parse_args()
 
 data_dir = opt.data_dir
-dataprepare(opt.srcdata_dir,opt.data_dir)
+#dataprepare(opt.srcdata_dir,opt.data_dir)
 
 torch.manual_seed(opt.seed)
 os.environ['CUDA_VISIBLE_DEVICES'] = opt.gpu_ids
